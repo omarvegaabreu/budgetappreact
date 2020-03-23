@@ -27,13 +27,12 @@
 
 // // console.log(publisher.name)
 
-
 // console.log(publisherName)
 
 // const address = ['1545 NW 15th st rd', '908', 'Miami', 'FL', '33125']
-// const [stree,apt,city,state,zip] = address
+// const [street,apt,city,state,zip] = address
 
-const order = ['Coffe (hot)', 2.00, 2.50, 2.75]
-const [coffeHot, small, medium, large] = order;
+// const order = ['Coffee (hot)', 2.00, 2.50, 2.75]
+// const [coffeeHot, small, medium, large] = order;
 
-console.log(`${coffeHot} costs ${medium} `)
+// console.log(`${coffeeHot} costs ${medium} `)
