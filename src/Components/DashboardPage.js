@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 
 //components
@@ -12,3 +13,14 @@ const DashboardPage = props => (
 );
 
 export default DashboardPage;
+=======
+import React from 'react'
+
+
+const DashboardPage = () => (
+  <div>This is DashboardPage</div>
+)
+
+
+export default DashboardPage
+>>>>>>> refs/remotes/origin/master
