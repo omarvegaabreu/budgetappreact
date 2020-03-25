@@ -13,16 +13,17 @@ export default class EditExpenseForm extends React.Component {
     calendarFocused: false
   };
 
+  //updates state of text in form
   onTextChange = e => {
     const description = e.target.value;
     this.setState(() => ({ description }));
   };
-
+  //updates state of note in form
   onNoteChange = e => {
     const note = e.target.value;
     this.setState(() => ({ note }));
   };
-
+  //updates de amount, set with only one decimal place, reg value
   onAmountChange = e => {
     const amount = e.target.value;
 
@@ -30,11 +31,11 @@ export default class EditExpenseForm extends React.Component {
       this.setState(() => ({ amount }));
     }
   };
-
+  //sets date for single date picker
   onDateChange = createdAt => {
     this.setState(() => ({ createdAt }));
   };
-
+  //sets focus for single date picker
   onFocusChange = ({ focused }) => {
     this.setState(() => ({ calendarFocused: focused }));
   };
@@ -56,11 +57,15 @@ export default class EditExpenseForm extends React.Component {
             value={this.state.amount}
             onChange={this.onAmountChange}
           ></input>
-          <SingleDatePicker
+          <SingleDatePicker //airbnb react calendar dates
             date={this.state.createdAt} // momentPropTypes.momentObj or null
             onDateChange={this.onDateChange} // PropTypes.func.isRequired
             focused={this.state.calendarFocused} // PropTypes.bool
             onFocusChange={this.onFocusChange} // PropTypes.func.isRequired
+            numberOfMonths={1}
+            isOutsideRange={() => {
+              false;
+            }}
           />
           <textarea
             type="text"
