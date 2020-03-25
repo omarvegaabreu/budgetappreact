@@ -8,9 +8,10 @@ export default class EditExpenseForm extends React.Component {
   state = {
     description: "",
     note: "",
-    amount: 0,
+    amount: "",
     createdAt: moment(),
-    calendarFocused: false
+    calendarFocused: false,
+    error: ""
   };
 
   //updates state of text in form
@@ -27,23 +28,49 @@ export default class EditExpenseForm extends React.Component {
   onAmountChange = e => {
     const amount = e.target.value;
 
-    if (/^\d*(\.\d{0,2})?$/) {
+    if (!amount || amount.match(/^\d{1,}(\.\d{0,2})?$/)) {
       this.setState(() => ({ amount }));
     }
   };
   //sets date for single date picker
   onDateChange = createdAt => {
-    this.setState(() => ({ createdAt }));
+    if (createdAt) {
+      this.setState(() => ({ createdAt }));
+    }
   };
   //sets focus for single date picker
   onFocusChange = ({ focused }) => {
     this.setState(() => ({ calendarFocused: focused }));
   };
 
+  //submit form
+  handleOnSubmit = e => {
+    e.preventDefault();
+
+    if (!this.state.description || !this.state.amount) {
+      //set error message
+      this.setState(() => ({
+        error: "Please provide description and amount."
+      }));
+    } else {
+      this.setState(() => ({
+        error: " "
+      }));
+
+      this.props.onSubmit({
+        description: this.state.description,
+        amount: parseFloat(this.state.amount, 10) * 100,
+        createdAt: this.state.createdAt.valueOf(),
+        note: this.state.note
+      });
+    }
+  };
+
   render() {
     return (
       <div>
-        <form>
+        {this.state.error && <p>{this.state.error}</p>}
+        <form onSubmit={this.handleOnSubmit}>
           <input
             type="text"
             placeholder="Description"
@@ -52,7 +79,7 @@ export default class EditExpenseForm extends React.Component {
             onChange={this.onTextChange}
           ></input>
           <input
-            type="number"
+            type="text"
             placeholder="Amount"
             value={this.state.amount}
             onChange={this.onAmountChange}
