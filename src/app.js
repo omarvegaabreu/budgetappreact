@@ -3,10 +3,7 @@
 //react
 import React from "react";
 import ReactDOM from "react-dom";
-<<<<<<< HEAD
 import { Provider } from "react-redux";
-=======
->>>>>>> refs/remotes/origin/master
 //Router
 import AppRouter from "../src/Router/AppRouter";
 //redux store
@@ -30,7 +27,6 @@ store.subscribe(() => {
   console.log(visibleExpenses);
 });
 
-<<<<<<< HEAD
 store.dispatch(
   addExpense({ description: "Water bill", amount: 4500, createdAt: -1 })
 );
@@ -46,12 +42,3 @@ const jsx = (
 );
 
 ReactDOM.render(jsx, document.getElementById("app"));
-=======
-const expenseOne = store.dispatch(addExpense({ description: "Water bill" }));
-const expenseTwo = store.dispatch(addExpense({ description: "Gas bill" }));
-
-store.dispatch(setTextFilter("bill"));
-store.dispatch(setTextFilter("water"));
-
-ReactDOM.render(<AppRouter />, document.getElementById("app"));
->>>>>>> refs/remotes/origin/master
