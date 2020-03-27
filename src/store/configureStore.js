@@ -1,18 +1,15 @@
-//external dependencies
 import { createStore, combineReducers } from "redux";
-
-//reducers import
-import expensesReducers from "../reducers/expenses-reducers";
-import filtersReducers from "../reducers/filters-reducers";
+import expensesReducer from "../reducers/expenses-reducers";
+import filtersReducer from "../reducers/filters-reducers";
 
 export default () => {
-  //store creation
-
   const store = createStore(
     combineReducers({
-      expenses: expensesReducers,
-      filters: filtersReducers
-    })
+      expenses: expensesReducer,
+      filters: filtersReducer
+    }),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
+
   return store;
 };

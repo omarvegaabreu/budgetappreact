@@ -1,13 +1,12 @@
 import { uuid } from "uuidv4";
 
-//expenses action generators functions
-//adds expenses
+// ADD_EXPENSE
 export const addExpense = ({
   description = "",
   note = "",
   amount = 0,
   createdAt = 0
-}) => ({
+} = {}) => ({
   type: "ADD_EXPENSE",
   expense: {
     id: uuid(),
@@ -18,15 +17,15 @@ export const addExpense = ({
   }
 });
 
-//removes expenses from app object
-export const removeExpense = ({ id }) => ({
+// REMOVE_EXPENSE
+export const removeExpense = ({ id } = {}) => ({
   type: "REMOVE_EXPENSE",
   id
 });
 
-//edits expenses from app object
-export const editExpense = (id, update) => ({
+// EDIT_EXPENSE
+export const editExpense = (id, updates) => ({
   type: "EDIT_EXPENSE",
   id,
-  update
+  updates
 });

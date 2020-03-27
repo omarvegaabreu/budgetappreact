@@ -1,4 +1,5 @@
-//get visible expenses
+// Get visible expenses
+
 export default (expenses, { text, sortBy, startDate, endDate }) => {
   return expenses
     .filter(expense => {
@@ -10,7 +11,7 @@ export default (expenses, { text, sortBy, startDate, endDate }) => {
         .toLowerCase()
         .includes(text.toLowerCase());
 
-      return textMatch && startDateMatch && endDateMatch;
+      return startDateMatch && endDateMatch && textMatch;
     })
     .sort((a, b) => {
       if (sortBy === "date") {

@@ -1,24 +1,26 @@
-//filters text actions functions
+// SET_TEXT_FILTER
 export const setTextFilter = (text = "") => ({
-  type: "FILTER_TEXT",
+  type: "SET_TEXT_FILTER",
   text
 });
-//sort by date function
+
+// SORT_BY_DATE
 export const sortByDate = () => ({
   type: "SORT_BY_DATE"
 });
 
-//sort by amount
+// SORT_BY_AMOUNT
 export const sortByAmount = () => ({
   type: "SORT_BY_AMOUNT"
 });
 
-//sort by start date
+// SET_START_DATE
 export const setStartDate = startDate => ({
   type: "SET_START_DATE",
   startDate
 });
 
+// SET_END_DATE
 export const setEndDate = endDate => ({
   type: "SET_END_DATE",
   endDate
