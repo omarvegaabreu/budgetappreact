@@ -5,14 +5,20 @@ import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
 
 export default class EditExpenseForm extends React.Component {
-  state = {
-    description: "",
-    note: "",
-    amount: "",
-    createdAt: moment(),
-    calendarFocused: false,
-    error: ""
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      description: props.expenses ? props.state.description : "description",
+      note: props.expenses ? props.state.note : "note",
+      amount: props.expenses
+        ? parseFloat(props.state.amount, 10) * 100
+        : "expense",
+      createdAt: props.expenses ? props.state.createdAt.valueOf() : moment(),
+      calendarFocused: false,
+      error: ""
+    };
+  }
 
   //updates state of text in form
   onTextChange = e => {

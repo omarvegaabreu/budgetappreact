@@ -18,14 +18,16 @@ import "./styles/styles.scss";
 
 const store = configureStore();
 
-console.log(store.getState());
+// console.log(store.getState());
 
-store.subscribe(() => {
-  const state = store.getState();
-  const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+// store.subscribe(() => {
+//   const state = store.getState();
+//   const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+//   console.log(visibleExpenses);
+// });
 
-  console.log(visibleExpenses);
-});
+const state = store.getState();
+const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 
 store.dispatch(
   addExpense({ description: "Water bill", amount: 4500, createdAt: -1 })
