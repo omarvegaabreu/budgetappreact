@@ -13,74 +13,63 @@ test("should set up default values to state reducers", () => {
 });
 
 test("should set text filter", () => {
-  const currentState = {
-    text: "test",
-    sortBy: "",
-    startDate: undefined,
-    endDate: undefined
-  };
+  const text = "test";
 
-  const action = { type: "@@INIT" };
-  const state = filtersReducers(currentState, action);
-  expect(state.text).toBe("test");
+  const action = {
+    type: "SET_TEXT_FILTER",
+    text
+  };
+  const state = filtersReducers(undefined, action);
+  expect(state.text).toBe(text);
 });
 
 test("should sort state by amount", () => {
-  const currentState = {
-    text: "",
-    sortBy: "date",
-    startDate: undefined,
-    endDate: undefined
+  const sortBy = "amount";
+
+  const action = {
+    type: "SORT_BY_AMOUNT",
+    sortBy
   };
 
-  const action = { type: "SORT_BY_AMOUNT" };
-
-  const state = filtersReducers(currentState, action);
+  const state = filtersReducers(undefined, action);
 
   expect(state.sortBy).toBe("amount");
 });
 
 test("should sort by date", () => {
-  const currentState = {
-    text: "",
-    startDate: undefined,
-    endDate: undefined,
-    sortBy: "amount"
+  const sortBy = "date";
+
+  const action = {
+    type: "SORT_BY_DATE",
+    sortBy
   };
 
-  const action = { type: "SORT_BY_DATE" };
-
-  const state = filtersReducers(currentState, action);
+  const state = filtersReducers(undefined, action);
 
   expect(state.sortBy).toBe("date");
 });
 
 test("should set start date", () => {
-  const currentState = {
-    text: "",
-    startDate: moment(0),
-    endDate: undefined,
-    sortBy: "amount"
+  const startDate = moment(0);
+
+  const action = {
+    type: "SET_START_DATE",
+    startDate
   };
 
-  const action = { type: "@@INIT" };
-
-  const state = filtersReducers(currentState, action);
+  const state = filtersReducers(undefined, action);
 
   expect(state.startDate).toEqual(moment(0));
 });
 
 test("should set END date", () => {
-  const currentState = {
-    text: "",
-    startDate: moment(0),
-    endDate: moment(1),
-    sortBy: "amount"
+  const endDate = moment(1);
+  const action = {
+    type: "SET_END_DATE",
+    endDate
   };
 
-  const action = { type: "@@INIT" };
+  const state = filtersReducers(undefined, action);
 
-  const state = filtersReducers(currentState, action);
-
-  expect(state.startDate).toEqual(moment(0));
+  expect(state.endDate).toEqual(moment(1));
 });
