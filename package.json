@@ -9,7 +9,7 @@
     "build": "webpack",
     "dev": "webpack-dev-server",
     "start": "npm run dev",
-    "test": "jest"
+    "test": "jest --config=jest.config.json"
   },
   "dependencies": {
     "@babel/cli": "^7.0.0",
@@ -20,11 +20,13 @@
     "@types/redux": "^3.6.0",
     "babel-loader": "^8.0.0",
     "css-loader": "^3.4.2",
+    "enzyme-to-json": "^3.4.4",
     "fibers": "^4.0.2",
     "live-server": "^1.2.1",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",
+    "raf": "^3.4.1",
     "react": "^16.13.0",
     "react-addons-shallow-compare": "^15.6.2",
     "react-dates": "^21.8.0",
@@ -32,6 +34,7 @@
     "react-modal": "^3.11.2",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
+    "react-test-renderer": "^16.13.1",
     "redux": "^4.0.5",
     "sass": "^1.26.2",
     "sass-loader": "^8.0.2",
@@ -48,6 +51,8 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.4.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^25.2.3"
   },
   "keywords": [],
