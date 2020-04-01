@@ -9,9 +9,6 @@ import {
   setEndDate
 } from "../actions/filters";
 
-// import "react-dates/lib/css/_datepicker.css";
-// import "react-dates/initialize";
-
 class ExpenseListFilters extends React.Component {
   constructor(props) {
     super(props);

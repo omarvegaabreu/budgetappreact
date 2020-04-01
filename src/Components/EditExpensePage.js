@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 //components
-import ExpenseForm from "./EditExpenseForm";
+import ExpenseForm from "./ExpenseForm";
 import { editExpense, removeExpense } from "../actions/expenses";
 
 const EditExpensePage = props => {
