@@ -26,7 +26,7 @@ test("should render error for invalid form submission", () => {
 
 test("should set description on input change", () => {
   const value = "test value";
-  const wrapper = shallow(<ExpenseForm expenses={expenses[0]} />);
+  const wrapper = shallow(<ExpenseForm expense={expenses[0]} />);
   wrapper
     .find("input")
     .at(0)
