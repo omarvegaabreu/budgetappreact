@@ -9,8 +9,10 @@
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
     "dev": "webpack-dev-server",
-    "start": "npm run dev",
-    "test": "jest --config=jest.config.json"
+    "start:dev": "npm run dev",
+    "start:prod": "node server/server.js",
+    "test": "jest --config=jest.config.json",
+    "heroku-postbuild": "npm run build:prod"
   },
   "dependencies": {
     "@babel/cli": "^7.0.0",
@@ -22,6 +24,7 @@
     "babel-loader": "^8.0.0",
     "css-loader": "^3.4.2",
     "enzyme-to-json": "^3.4.4",
+    "express": "^4.17.1",
     "fibers": "^4.0.2",
     "live-server": "^1.2.1",
     "moment": "^2.24.0",
