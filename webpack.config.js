@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = env => {
   const isProduction = env === "production";
-  const CSSExtract = new MiniCssExtractPlugin("styles.css");
+  const CSSExtract = new MiniCssExtractPlugin();
   return {
     entry: "./src/app.js",
     output: {
