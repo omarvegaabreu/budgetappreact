@@ -50,6 +50,9 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
+  "engines": {
+    "node": "10.x"
+  },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
