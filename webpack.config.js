@@ -1,10 +1,11 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = env => {
   const isProduction = env === "production";
   const CSSExtract = new MiniCssExtractPlugin();
-  const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+  const optimizeCss = new OptimizeCssAssetsPlugin();
   return {
     entry: "./src/app.js",
     output: {
@@ -39,7 +40,7 @@ module.exports = env => {
         }
       ]
     },
-    plugins: [CSSExtract, OptimizeCssAssetsPlugin],
+    plugins: [CSSExtract, optimizeCss],
     devtool: isProduction ? "source-map" : "inline-source-map",
     devServer: {
       contentBase: path.join(__dirname, "public"),
