@@ -11,7 +11,6 @@ import "./styles/styles.scss";
 //react dates
 import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
-require("./nav.css");
 
 const store = configureStore();
 const state = store.getState();
