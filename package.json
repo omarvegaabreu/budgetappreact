@@ -46,7 +46,7 @@
     "uuid": "^7.0.2",
     "uuidv4": "^6.0.6",
     "validator": "^12.2.0",
-    "webpack": "^4.42.1",
+    "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
