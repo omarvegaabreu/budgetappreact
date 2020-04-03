@@ -3,6 +3,8 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, "../public");
+//minicss pluggin
+require("./nav.css");
 
 app.use(express.static(publicPath));
 

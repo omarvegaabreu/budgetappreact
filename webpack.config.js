@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = env => {
   const isProduction = env === "production";
   const CSSExtract = new MiniCssExtractPlugin();
+  const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
   return {
     entry: "./src/app.js",
     output: {
@@ -24,7 +25,8 @@ module.exports = env => {
             {
               loader: "css-loader",
               options: {
-                sourceMap: true
+                sourceMap: true,
+                minimize: true
               }
             },
             {
@@ -37,7 +39,7 @@ module.exports = env => {
         }
       ]
     },
-    plugins: [CSSExtract],
+    plugins: [CSSExtract, OptimizeCssAssetsPlugin],
     devtool: isProduction ? "source-map" : "inline-source-map",
     devServer: {
       contentBase: path.join(__dirname, "public"),
