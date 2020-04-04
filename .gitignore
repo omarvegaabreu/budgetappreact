@@ -1,2 +1,5 @@
 node_modules
 public/dist
+npm-debug.log
+.DS_Store
+/*.env
