@@ -8,7 +8,7 @@ exports[`should render 1 expense summary component 1`] = `
      
     expense
      totaling: 
-    $2.95
+    $1.95
      
   </h1>
 </div>

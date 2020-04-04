@@ -1,29 +1,17 @@
 import React from "react";
-import { connect } from "react-redux";
-import numeral from "numeral";
-import selectExpenses from "../selectors/expenses-selectors.test";
-import selectExpensesTotal from "../selectors/totalExpenses-selectors.test";
+import { shallow } from "enzyme";
+import { ExpensesSummary } from "../../components/ExpensesSummary";
 
-export const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
-  const expenseWord = expenseCount === 1 ? "expense" : "expenses";
-  const formattedExpensesTotal = numeral(expensesTotal / 100).format("$0,0.00");
-
-  return (
-    <div>
-      <h1>
-        Viewing {expenseCount} {expenseWord} totalling {formattedExpensesTotal}
-      </h1>
-    </div>
+test("should render 1 expense summary component", () => {
+  const wrapper = shallow(
+    <ExpensesSummary expenseCount={1} expensesTotal={195} />
   );
-};
+  expect(wrapper).toMatchSnapshot();
+});
 
-const mapStateToProps = (state) => {
-  const visibleExpenses = selectExpenses(state.expenses, state.filters);
-
-  return {
-    expenseCount: visibleExpenses.length,
-    expensesTotal: selectExpensesTotal(visibleExpenses),
-  };
-};
-
-export default connect(mapStateToProps)(ExpensesSummary);
+test("should render multiple expense summary component ", () => {
+  const wrapper = shallow(
+    <ExpensesSummary expenseCount={51} expensesTotal={654654654321} />
+  );
+  expect(wrapper).toMatchSnapshot();
+});
