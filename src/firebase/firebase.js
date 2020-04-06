@@ -15,22 +15,78 @@ firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 const database = firebase.database();
 
-database.ref().on("value", (dataSnapshot) => {
-  const data = dataSnapshot.val();
-  const name = data.name;
-  const position = data.job.position;
-  const company = data.job.company;
-
-  console.log(`${name} is a ${position} at ${company}`);
-});
-database.ref("age");
-setTimeout(() => {
-  database.ref().update({
-    stressLevel: 9,
-    "job/position": "was fired developer",
-    "job/company": "from amazon",
+database.ref("expenses").on("value", (dataSnapshot) => {
+  const expenses = [];
+  dataSnapshot.forEach((childSnapShot) => {
+    expenses.push({
+      id: childSnapShot.key,
+      ...childSnapShot.val(),
+    });
   });
-}, 3000);
+  console.log(expenses);
+});
+
+database.ref("expenses").on("child_removed", (dataSnapshot) => {
+  const expenses = [];
+  dataSnapshot.forEach((childSnapShot) => {
+    expenses.push({
+      id: childSnapShot.key,
+      ...childSnapShot.val(),
+    });
+  });
+  console.log(expenses);
+});
+
+database.ref("expenses").on("child_changed", (dataSnapshot) => {
+  const expenses = [];
+  dataSnapshot.forEach((childSnapShot) => {
+    expenses.push({
+      id: childSnapShot.key,
+      ...childSnapShot.val(),
+    });
+  });
+  console.log(expenses);
+});
+// database.ref("expenses").push({
+//   description: "test description",
+//   note: "this is my description",
+//   amount: 55,
+//   createAt: 0,
+// });
+
+// database
+//   .ref("expenses")
+//   .once("value")
+//   .then((snapshot) => {
+//     const expenses = [];
+//     snapshot.forEach((childSnapShot) => {
+//       expenses.push({
+//         id: childSnapShot.key,
+//         ...childSnapShot.val(),
+//       });
+//     });
+//     console.log(expenses);
+//   })
+//   .catch((e) => {
+//     console.log(`FUCK ${e}`);
+//   });
+
+// database.ref().on("value", (dataSnapshot) => {
+//   const data = dataSnapshot.val();
+//   const name = data.name;
+//   const position = data.job.position;
+//   const company = data.job.company;
+
+//   console.log(`${name} is a ${position} at ${company}`);
+// });
+// database.ref("age");
+// setTimeout(() => {
+//   database.ref().update({
+//     stressLevel: 9,
+//     "job/position": "was fired developer",
+//     "job/company": "from amazon",
+//   });
+// }, 3000);
 
 // database
 //   .ref()
