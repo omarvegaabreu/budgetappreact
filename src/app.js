@@ -3,16 +3,17 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import AppRouter from "./router/AppRouter.js";
 import configureStore from "./store/configureStore";
-import getVisibleExpenses from "./selectors/expenses-selectors";
+// import getVisibleExpenses from "./selectors/expenses-selectors";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
+import "./firebase/firebase";
 //react dates
 import "react-dates/lib/css/_datepicker.css";
 import "react-dates/initialize";
-
+//playground
 const store = configureStore();
 const state = store.getState();
-const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
+// const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 
 console.log("thank you for viewing my app");
 
