@@ -16,7 +16,7 @@ export const startAddExpense = (expenseData = {}) => {
     } = expenseData;
     const expense = { description, note, amount, createdAt };
 
-    database
+    return database
       .ref("expense")
       .push(expense)
       .then((ref) => {
