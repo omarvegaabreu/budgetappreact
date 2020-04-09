@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import AppRouter from "./router/AppRouter.js";
+import AppRouter from "./routers/AppRouter.js";
 import configureStore from "./store/configureStore";
+import { startSetExpenses } from "./actions/expenses";
+import { setTextFilter } from "./actions/filters";
 // import getVisibleExpenses from "./selectors/expenses-selectors";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
@@ -17,10 +19,17 @@ const state = store.getState();
 
 console.log("thank you for viewing my app");
 
+ReactDOM.render(<p>Loading...</p>, document.getElementById("app"));
 const jsx = (
   <Provider store={store}>
     <AppRouter />
   </Provider>
 );
-
-ReactDOM.render(jsx, document.getElementById("app"));
+store
+  .dispatch(startSetExpenses())
+  .then(() => {
+    ReactDOM.render(jsx, document.getElementById("app"));
+  })
+  .catch((e) => {
+    console.log(`I PITTY THE FOOL WHO CAUSE THIS: ${e}`);
+  });

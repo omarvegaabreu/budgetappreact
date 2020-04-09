@@ -1,4 +1,3 @@
-import moment from "moment";
 import expensesReducers from "../../reducers/expenses-reducers";
 
 //fixtures
@@ -13,7 +12,7 @@ test("should test default expenses", () => {
 test("should remove expense", () => {
   const action = {
     type: "REMOVE_EXPENSE",
-    id: expenses[1].id
+    id: expenses[1].id,
   };
 
   const state = expensesReducers(expenses, action);
@@ -23,7 +22,7 @@ test("should remove expense", () => {
 test("should not remove any expense", () => {
   const action = {
     type: "REMOVE_EXPENSE",
-    id: "-1"
+    id: "-1",
   };
 
   const state = expensesReducers(expenses, action);
@@ -36,11 +35,11 @@ test("should add expense", () => {
     amount: 425,
     createdAt: 0,
     description: "test",
-    note: "test note"
+    note: "test note",
   };
   const action = {
     type: "ADD_EXPENSE",
-    expense
+    expense,
   };
   const state = expensesReducers(expenses, action);
   expect(state).toEqual([...expenses, expense]);
@@ -52,8 +51,8 @@ test("should edit expense", () => {
     type: "EDIT_EXPENSE",
     id: expenses[1].id,
     updates: {
-      amount
-    }
+      amount,
+    },
   };
   const state = expensesReducers(expenses, action);
   expect(state[1].amount).toBe(amount);
@@ -65,9 +64,18 @@ test("should not edit expense if not found", () => {
     type: "EDIT_EXPENSE",
     id: "1234",
     updates: {
-      amount
-    }
+      amount,
+    },
   };
   const state = expensesReducers(expenses, action);
   expect(state).toEqual(expenses);
+});
+
+test("should set expenses", () => {
+  const action = {
+    type: "SET_EXPENSE",
+    expenses: [expenses[1]],
+  };
+  const state = expensesReducers(expenses, action);
+  expect(state).toEqual([expenses[1]]);
 });

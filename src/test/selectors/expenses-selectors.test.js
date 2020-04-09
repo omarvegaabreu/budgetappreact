@@ -2,13 +2,26 @@ import addExpenses from "../../selectors/expenses-selectors";
 import moment from "moment";
 //test data
 import expenses from "../fixtures/expenses";
+import database from "../../firebase/firebase";
+
+beforeEach((done) => {
+  const expensesData = {};
+  expenses.forEach(({ id, description, note, amount, createdAt }) => {
+    expensesData[id] = { description, note, amount, createdAt };
+  });
+
+  database
+    .ref("expenses")
+    .set(expensesData)
+    .then(() => done());
+});
 
 test("should filter by text value", () => {
   const filters = {
     text: "e",
     sortBy: "date",
     startDate: undefined,
-    endDate: undefined
+    endDate: undefined,
   };
   const result = addExpenses(expenses, filters);
   expect(result).toEqual([expenses[2], expenses[1]]);
@@ -19,7 +32,7 @@ test("should filter by start date", () => {
     text: "",
     sortBy: "date",
     startDate: moment(0),
-    endDate: undefined
+    endDate: undefined,
   };
 
   const result = addExpenses(expenses, filters);
@@ -31,7 +44,7 @@ test("should filter by end date", () => {
     text: "",
     sortBy: "date",
     startDate: undefined,
-    endDate: moment(0).add(2, "days")
+    endDate: moment(0).add(2, "days"),
   };
   const result = addExpenses(expenses, filters);
   expect(result).toEqual([expenses[0], expenses[1]]);
@@ -42,7 +55,7 @@ test("should sort by date", () => {
     text: "",
     sortBy: "date",
     startDate: undefined,
-    endDate: undefined
+    endDate: undefined,
   };
   const result = addExpenses(expenses, filters);
   expect(result).toEqual([expenses[2], expenses[0], expenses[1]]);
@@ -53,7 +66,7 @@ test("should sort by amount", () => {
     text: "",
     sortBy: "amount",
     startDate: undefined,
-    endDate: undefined
+    endDate: undefined,
   };
   const result = addExpenses(expenses, filters);
   expect(result).toEqual([expenses[1], expenses[2], expenses[0]]);
